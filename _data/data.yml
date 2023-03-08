@@ -34,12 +34,7 @@ sidebar:
 career-profile:
     title: Career Profile
     summary: |
-      Summarise your career here lorem ipsum dolor sit amet, consectetuer
-      adipiscing elit. You can [download this free resume/CV template here]().
-      Aenean commodo ligula eget dolor aenean massa. Cum sociis natoque
-      penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-      Donec quam felis, ultricies nec, pellentesque eu.
-      Second paragraph if required.
+        Hello, 
 education:
     title: Education
     info:
@@ -55,26 +50,23 @@ education:
         university: Pohang University of Science and Technology (POSTECH)
         time: 2016.03 - 2020.08
         details: |
-            - GPA : 3.69/4.3
+            - GPA : 3.69/4.3 (Magna Cum Laude)
 experiences:
     title: Experiences
     info:
       - role: Internship
         time: 2020.01 - 2020.02
         company: Samsung Electronics CE/IM Visual Display (VD), SoC H/W Team
-        details: |
-            - Bullet point
-            - Bullet point
-      - role: Senior Software Engineer
+
+      - role: Internship
         time: 2014 - 2018.06
         company: LG Display, OLED Encap. Team
         details: |
-            - Bullet point
-            - Bullet point
+            - POTSECH SES Program
 
-Awards:
+awards:
     title: Awards
-    Awards:
+    info:
       - title : Exellence Award in Artificial Intelligence Diabetes Datathon 2021 (A.I.D.D 2021)
         link : "https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwijiZvElcz9AhWRVd4KHSThBpAQtwJ6BAgQEAI&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DLgOKBqKem60&usg=AOvVaw3EMVZUu2VN39B1bdUwMEjb"
         role : Team Leader

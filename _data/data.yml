@@ -34,7 +34,9 @@ sidebar:
 career-profile:
     title: Career Profile
     summary: |
-        Hello, 
+        Hello, I am currently member of CSDL lab in the Department of Electrical Engineering, Pohang University of Science and Technology (POSTECH), South Korea.
+        My research interest lies in ML-CAD (Machine Learning Computer Aided Design).
+        
 education:
     title: Education
     info:
@@ -59,7 +61,7 @@ experiences:
         company: Samsung Electronics CE/IM Visual Display (VD), SoC H/W Team
 
       - role: Internship
-        time: 2014 - 2018.06
+        time: 2018.06 - 2018.07
         company: LG Display, OLED Encap. Team
         details: |
             - POTSECH SES Program

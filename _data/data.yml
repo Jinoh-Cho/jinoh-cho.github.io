@@ -28,7 +28,7 @@ sidebar:
     interests:
       title: Interests
       info:
-        - item: Soccer and Futsal
+        - item: Soccer and Tennis
         - item: Snowboarding and Surfing
 
 career-profile:
@@ -46,13 +46,13 @@ education:
         details: |
             - Under the supervision of Prof.Jaesik Park in Computer Vision Lab.
             - Thesis : Instance-Aware Image Completion
-#  - GPA : 3.90/4.3
+#           - GPA : 3.90/4.3
 
       - degree: B.S. in Electrical Engineering
         university: Pohang University of Science and Technology (POSTECH)
         time: 2016.03 - 2020.08
-#         details: |
-#             - GPA : 3.69/4.3 (Magna Cum Laude)
+#       details: |
+#           - GPA : 3.69/4.3 (Magna Cum Laude)
 experiences:
     title: Experiences
     info:

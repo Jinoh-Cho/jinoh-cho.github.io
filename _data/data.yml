@@ -34,8 +34,8 @@ sidebar:
 career-profile:
     title: Career Profile
     summary: |
-        At present, I am affiliated with the CSDL lab in the Department of Electrical Engineering at Pohang University of Science and Technology (POSTECH), South Korea. 
-        My area of research revolves around the adoption of AI for VLSI CAD (Computer-Aided Design). Previously, I received B.S. and M.S. degree in Electrical Engineering and Graduate School of AI (GSAI) from Pohang University of Science and Technology (POSTECH), respectively.
+        At present, I am affiliated with the CSDL lab under [Prof. Seokhyeong Kang](http://csdl.postech.ac.kr/bbs/board.php?bo_table=sub3_1) in the Department of Electrical Engineering at Pohang University of Science and Technology (POSTECH), South Korea. 
+        My area of research revolves around the adoption of AI for VLSI CAD (Computer-Aided Design). Previously, I received B.S. and M.S. degree in Electrical Engineering and Graduate School of AI (GSAI) both from POSTECH, respectively.
         While pursuing master degree, I was advised by [Prof. Jaesik Park](https://jaesik.info) in the [Computer Vision Lab](https://cvlab.postech.ac.kr/lab/) at POSTECH.
 education:
     title: Education
@@ -70,7 +70,7 @@ awards:
       - title : Exellence Award in Artificial Intelligence Diabetes Datathon 2021 (<b>A.I.D.D 2021</b>)
         link : "https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwijiZvElcz9AhWRVd4KHSThBpAQtwJ6BAgQEAI&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DLgOKBqKem60&usg=AOvVaw3EMVZUu2VN39B1bdUwMEjb"
         authors: <b>Jinoh Cho</b>, Hyunjun Lee, Kang Gun
-        conference : Participate as a Team Leader, AI Model Development Challenge for Diabetes Prediction with NSML(Naver Smart Machine Learning) platform.  
+        conference : Participate as a Team Leader, AI Model Development Challenge for Diabetes Prediction on NSML(Naver Smart Machine Learning) platform.  
 
 publications:
     title: Publications
@@ -78,7 +78,7 @@ publications:
       - title: Instance-Aware Image Completion
         link: "https://arxiv.org/abs/2210.12350"
         authors: <b>Jinoh Cho</b>, Minguk Kang, Vibhav Vineet, Jaesik Park
-        conference: AI for Content Creation (AI4CC) <b>CVPR workshop</b>, 2023
+        conference: <b>CVPR workshop</b> on AI for Content Creation (AI4CC), 2023
 
 skills:
     title: Skills &amp; Proficiency

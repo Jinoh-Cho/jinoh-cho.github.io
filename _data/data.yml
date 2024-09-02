@@ -75,6 +75,14 @@ awards:
 publications:
     title: Publications
     papers:
+      - title: RL-Fill: Timing-Aware Fill Insertion Using Reinforcement Learning
+        authors: <b>Jinoh Cho</b>, Seonghyeon Park, Jakang Lee, Sung-Yun Lee, Jinmo Ahn, and Seokhyeong Kang
+        conference: ACM/IEEE International Conference on Computer-Aided Design (ICCAD), Newark, USA, 2024
+    
+      - title: TA3D: Timing-Aware 3D IC Partitioning and Placement by Optimizing the Critical Path
+        authors: Donggyu Kim, Minjae Kim, Junseok Hur, Jakang Lee, <b>Jinoh Cho</b>, and Seokhyeong Kang
+        conference: ACM/IEEE International Symposium on Machine Learning for CAD (MLCAD), Snowbird, USA, 2024
+
       - title: Instance-Aware Image Completion
         link: "https://arxiv.org/abs/2210.12350"
         authors: <b>Jinoh Cho</b>, Minguk Kang, Vibhav Vineet, Jaesik Park

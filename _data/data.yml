@@ -78,17 +78,17 @@ publications:
       - title : Timing-Aware Fill Insertion using Reinforcement Learning
         link : "https://arxiv.org/abs/2210.12350"
         authors : <b>Jinoh Cho</b>, Seonghyeon Park, Jakang Lee, Sung-Yun Lee, Jinmo Ahn, and Seokhyeong Kang
-        conference : *ACM/IEEE International Conference on Computer-Aided Design (ICCAD), Newark, USA, 2024*
+        conference : <i>ACM/IEEE International Conference on Computer-Aided Design (ICCAD), Newark, USA, 2024</i>
     
       - title : Timing-Aware 3D IC Partitioning and Placement by Optimizing the Critical Path
         link : "https://arxiv.org/abs/2210.12350"
         authors : Donggyu Kim, Minjae Kim, Junseok Hur, Jakang Lee, <b>Jinoh Cho</b>, and Seokhyeong Kang
-        conference : *ACM/IEEE International Symposium on Machine Learning for CAD (MLCAD), Snowbird, USA, 2024*
+        conference : <i>ACM/IEEE International Symposium on Machine Learning for CAD (MLCAD), Snowbird, USA, 2024</i>
 
       - title : Instance-Aware Image Completion
         link : "https://arxiv.org/abs/2210.12350"
         authors : <b>Jinoh Cho</b>, Minguk Kang, Vibhav Vineet, Jaesik Park
-        conference : *IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshop (CVPRW), Vancouver, Canada, 2023*
+        conference : <i>IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshop (CVPRW), Vancouver, Canada, 2023</i>
 
 skills:
     title: Skills &amp; Proficiency

@@ -75,7 +75,7 @@ awards:
 publications:
     title: Publications
     papers:
-      - title : Timing-Aware Fill Insertion Using Reinforcement Learning
+      - title : Timing-Aware Fill Insertion using Reinforcement Learning
         link : "https://arxiv.org/abs/2210.12350"
         authors : <b>Jinoh Cho</b>, Seonghyeon Park, Jakang Lee, Sung-Yun Lee, Jinmo Ahn, and Seokhyeong Kang
         conference : ACM/IEEE International Conference on Computer-Aided Design (ICCAD), Newark, USA, 2024

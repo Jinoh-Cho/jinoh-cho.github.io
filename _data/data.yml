@@ -91,7 +91,7 @@ publications:
         authors : <b>Jinoh Cho</b>, Jaekyung Im, Jaeseung Lee, Kyungjun Min, Seonghyeon Park, Jaemin Seo, Jongho Yoon, and Seokhyeong Kang
         conference : <i>Asia and South Pacific Design Automation Conference (ASP-DAC), Tokyo, Japan, 2025</i>
         
-      - title : RL-Fill: Timing-Aware Fill Insertion using Reinforcement Learning
+      - title : "RL-Fill: Timing-Aware Fill Insertion using Reinforcement Learning"
         link : "https://dl.acm.org/doi/10.1145/3676536.3676795"
         authors : <b>Jinoh Cho</b>, Seonghyeon Park, Jakang Lee, Sung-Yun Lee, Jinmo Ahn, and Seokhyeong Kang
         conference : <i>ACM/IEEE International Conference on Computer-Aided Design (ICCAD), Newark, USA, 2024</i>

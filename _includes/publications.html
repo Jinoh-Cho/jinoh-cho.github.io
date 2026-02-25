@@ -24,7 +24,9 @@
       <li>{{ publication.title }}</li>
     {% endif %}
     {%- assign my_name = "Jinoh Cho" -%}
-    {%- assign authors = publication.authors | replace: my_name, '<span class="me">' | append: my_name | append: '</span>' -%}
+    {%- assign authors = publication.authors
+      | replace: my_name, '<span class="me">Jinoh Cho</span>'
+    -%}
     <div class="publication-authors">{{ authors }}</div>
     <div class="publication-conference">{{ publication.conference }}</div>
   </div><!--//item-->

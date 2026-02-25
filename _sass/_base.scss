@@ -233,9 +233,13 @@ p {
     margin-bottom: 1px;
   }
   .publication-authors {
-    font-style: italic;
-    color: $text-color;
-    margin-bottom: 1px;
+    color: #000;        // 전체 저자 검정
+  }
+  
+  .publication-authors .me {
+    font-weight: 800;   // bold
+    text-decoration: underline; // 밑줄
+    text-underline-offset: 2px; // 밑줄 살짝 아래로 (선택)
   }
   .publications-section {
     .intro {

@@ -234,10 +234,12 @@ p {
   }
   .publication-authors {
     color: #000;        // 전체 저자 검정
+    font-style: italic;
   }
   
   .publication-authors .me {
     font-weight: 800;   // bold
+    font-style: italic;
     text-decoration: underline; // 밑줄
     text-underline-offset: 2px; // 밑줄 살짝 아래로 (선택)
   }

@@ -233,16 +233,22 @@ p {
     margin-bottom: 1px;
   }
   .publication-authors {
-    color: #000;        // 전체 저자 검정
+    color: $text-grey;        // 전체 저자 회색
     font-style: italic;
   }
   
   .publication-authors .me {
-    font-weight: 800;   // bold
-    font-style: italic;
-    text-decoration: underline; // 밑줄
-    text-underline-offset: 2px; // 밑줄 살짝 아래로 (선택)
+    font-weight: 800 !important;
+  
+    /* 밑줄이 안 먹는 경우가 있어서, underline + border-bottom 둘 다 걸기 */
+    text-decoration: underline !important;
+    text-underline-offset: 2px;
+  
+    display: inline-block;              /* border-bottom이 안정적으로 보이게 */
+    border-bottom: 2px solid currentColor;
+    padding-bottom: 1px;
   }
+  
   .publications-section {
     .intro {
       margin-bottom: 30px;

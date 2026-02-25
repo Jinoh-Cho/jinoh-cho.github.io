@@ -235,9 +235,7 @@ p {
   .publication-authors {
     color: $text-grey;        // 전체 저자 회색
     font-style: italic;
-  }
-  
-  .publication-authors .me {
+    .me {
     font-weight: 800 !important;
   
     /* 밑줄이 안 먹는 경우가 있어서, underline + border-bottom 둘 다 걸기 */
@@ -247,8 +245,8 @@ p {
     display: inline-block;              /* border-bottom이 안정적으로 보이게 */
     border-bottom: 2px solid currentColor;
     padding-bottom: 1px;
+    }
   }
-  
   .publications-section {
     .intro {
       margin-bottom: 30px;

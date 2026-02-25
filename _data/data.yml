@@ -34,9 +34,9 @@ sidebar:
 career-profile:
     title: Career Profile
     summary: |
-        At present, I am affiliated with the CSDL lab under [Prof. Seokhyeong Kang](http://csdl.postech.ac.kr/bbs/board.php?bo_table=sub3_1) in the Department of Electrical Engineering at Pohang University of Science and Technology (POSTECH), South Korea. 
-        My area of research revolves around the adoption of AI for VLSI CAD (Computer-Aided Design). Previously, I received B.S. and M.S. degree in Electrical Engineering and Graduate School of AI (GSAI) both from POSTECH, respectively.
-        While pursuing master degree, I was advised by [Prof. Jaesik Park](https://jaesik.info) in the [Computer Vision Lab](https://cvlab.postech.ac.kr/lab/) at POSTECH.
+        I am currently a member of the CSDL Lab, advised by [Prof. Seokhyeong Kang](http://csdl.postech.ac.kr/bbs/board.php?bo_table=sub3_1), in the Department of Electrical Engineering at Pohang University of Science and Technology (POSTECH), South Korea. My research focuses on developing differentiable optimization frameworks for VLSI CAD objectives and advancing AI-driven approaches for electronic design automation.
+        I received my B.S. in Electrical Engineering and my M.S. from the Graduate School of AI (GSAI), both at POSTECH. During my M.S., I was advised by [Prof. Jaesik Park](https://jaesik.info) in the [Computer Vision Lab](https://cvlab.postech.ac.kr/lab/) at POSTECH.
+        
 education:
     title: Education
     info:

@@ -78,7 +78,7 @@ publications:
       - title : Differentiable Fill Insertion with Explicit Delay Optimization
         link : "TBD"
         authors : <b>Jinoh Cho</b>, Jinmo Ahn, Jakang Lee, Jaeseung Lee, Seonghyeon Park and Seokhyeong Kang
-        conference : ACM/IEEE Design Automation Conference (DAC), Long Beach, USA, 2026</i>
+        conference : <i>ACM/IEEE Design Automation Conference (DAC), Long Beach, USA, 2026</i>
 
       - title : A Heterogeneous Graph-based Gate Sizer Integrating Graph Attention Network and Transformer
         link : "TBD"

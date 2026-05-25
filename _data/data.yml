@@ -94,7 +94,7 @@ publications:
         authors : <b>Jinoh Cho</b>, Jinmo Ahn, Jakang Lee, Jaeseung Lee, Seonghyeon Park and Seokhyeong Kang
         conference : <i>ACM/IEEE Design Automation Conference (DAC), Long Beach, CA, USA, 2026</i>
 
-      - title : CTRL-B: Back-End-Of-Line Configuration Optimization using Cross-Domain Transferable Reinforcement Learning
+      - title : "CTRL-B: Back-End-Of-Line Configuration Optimization using Cross-Domain Transferable Reinforcement Learning"
         link : "TBD"
         authors : Jaeseung Lee, Sung-Yun Lee, <b>Jinoh Cho</b>, Daijoon Hyun, and Seokhyeong Kang
         conference : <i>IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD), 2026</i>

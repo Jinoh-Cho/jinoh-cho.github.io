@@ -77,12 +77,12 @@ publications:
       - title : Timing- and Power-Aware Differentiable Repair of Minimum Implant Area Violations
         link : "TBD"
         authors : <b>Jinoh Cho</b>, Minhyuk Kweon, Jinmo Ahn, Jeyeong Park and Seokhyeong Kang
-        conference : <i>ACM/IEEE International Symposium on Low Power Electronics and Design (ISLPED), Evanston, IL, USA</i>
+        conference : <i>ACM/IEEE International Symposium on Low Power Electronics and Design (ISLPED), Evanston, IL, USA, 2026</i>
         
       - title : Differentiable Fill Insertion with Explicit Delay Optimization
         link : "TBD"
         authors : <b>Jinoh Cho</b>, Jinmo Ahn, Jakang Lee, Jaeseung Lee, Seonghyeon Park and Seokhyeong Kang
-        conference : <i>ACM/IEEE Design Automation Conference (DAC), Long Beach, USA, 2026</i>
+        conference : <i>ACM/IEEE Design Automation Conference (DAC), Long Beach, CA, USA, 2026</i>
 
       - title : A Heterogeneous Graph-based Gate Sizer Integrating Graph Attention Network and Transformer
         link : "TBD"
@@ -107,7 +107,7 @@ publications:
       - title : Timing-Aware 3D IC Partitioning and Placement by Optimizing the Critical Path
         link : "https://ieeexplore.ieee.org/document/10740192"
         authors : Donggyu Kim, Minjae Kim, Junseok Hur, Jakang Lee, <b>Jinoh Cho</b>, and Seokhyeong Kang
-        conference : <i>ACM/IEEE International Symposium on Machine Learning for CAD (MLCAD), Snowbird, USA, 2024</i>
+        conference : <i>ACM/IEEE International Symposium on Machine Learning for CAD (MLCAD), Snowbird, UT, USA, 2024</i>
 
       - title : Instance-Aware Image Completion
         link : "https://arxiv.org/abs/2210.12350"

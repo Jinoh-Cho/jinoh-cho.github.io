@@ -1,22 +1,217 @@
----
-layout: default
----
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jinoh Cho — Ph.D. candidate and researcher in AI-driven electronic design automation.">
+  <title>Jinoh Cho</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--ink:#1b1b1b;--text:#383838;--muted:#717171;--line:#d8d8d8;--soft:#f7f7f5;--paper:#fff}
+    html{scroll-behavior:smooth}
+    body{min-height:100vh;background:var(--paper);color:var(--ink);font-family:Georgia,"Times New Roman",serif;font-size:17px;line-height:1.65}
+    button,input{font:inherit}
+    a{color:inherit}
+    .topbar{position:sticky;top:0;z-index:20;display:grid;grid-template-columns:minmax(220px,340px) 1fr auto;grid-template-areas:"search nav brand";align-items:center;gap:.65rem 1.7rem;padding:1.05rem 3rem;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+    .brand{grid-area:brand;border:0;background:none;color:var(--ink);font-weight:700;font-size:1.45rem;cursor:pointer;white-space:nowrap}
+    .nav{grid-area:nav;display:flex;justify-content:flex-start;gap:.15rem;min-width:0;overflow-x:auto;scrollbar-width:none}
+    .nav::-webkit-scrollbar{display:none}
+    .nav button{padding:.38rem .85rem;border:0;border-bottom:2px solid transparent;background:none;color:var(--muted);font-size:1.05rem;cursor:pointer;white-space:nowrap;transition:.15s ease}
+    .nav button:hover{color:var(--ink);border-color:var(--line)}
+    .nav button.active{color:var(--ink);border-color:var(--ink);font-weight:600}
+    .search{grid-area:search;position:relative}
+    .search input{width:100%;padding:.42rem .72rem;border:1px solid var(--line);border-radius:2px;background:var(--paper);color:var(--ink);font-size:.94rem}
+    .search input:focus{outline:0;border-color:var(--ink)}
+    .results{display:none;position:absolute;inset:calc(100% + .35rem) 0 auto;background:#fff;border:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.09);max-height:55vh;overflow:auto}
+    .results.open{display:block}
+    .result{display:block;width:100%;padding:.58rem .72rem;text-align:left;border:0;border-bottom:1px solid var(--line);background:#fff;cursor:pointer}
+    .result:hover,.result:focus{background:var(--soft);outline:0}
+    .result small{display:block;color:var(--muted);font-size:.68rem;text-transform:uppercase;letter-spacing:.11em}
+    .result span{font-size:.9rem;line-height:1.35}
+    .page{display:none;max-width:1320px;margin:0 auto;padding:3.4rem 3rem 6rem;animation:enter .18s ease-out}
+    .page.active{display:block}
+    @keyframes enter{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+    .page-title{margin-bottom:2rem;padding-bottom:.7rem;border-bottom:1px solid var(--line);font-size:1.85rem;font-weight:700;line-height:1.3}
+    .about-grid{display:grid;grid-template-columns:260px minmax(0,1fr);gap:3.5rem}
+    .portrait{width:100%;aspect-ratio:3/4;border:1px solid var(--line);overflow:hidden;background:var(--soft)}
+    .portrait img{display:block;width:100%;height:100%;object-fit:cover}
+    .caption{margin:.38rem 0 1rem;color:var(--muted);font-size:.78rem;font-style:italic}
+    .profile-name{font-size:1.35rem;font-weight:700;line-height:1.3}
+    .role{margin-top:.14rem;color:var(--text);font-size:1.02rem;font-weight:600}
+    .affiliation{margin-top:.12rem;color:var(--muted);font-size:.95rem;line-height:1.55}
+    .profile-links{display:flex;flex-direction:column;gap:.52rem;margin-top:1.25rem}
+    .profile-links a{display:flex;align-items:center;gap:.6rem;color:var(--text);text-decoration:none}
+    .profile-links a:hover{text-decoration:underline}
+    .icon{width:17px;text-align:center;color:var(--muted)}
+    .bio{color:var(--text);font-size:1.04rem;line-height:1.85}
+    .bio a{text-decoration:underline;text-underline-offset:2px}
+    .eyebrow{margin:2.45rem 0 .95rem;color:var(--muted);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.11em}
+    .tags{display:flex;flex-wrap:wrap;gap:.48rem}
+    .tag{padding:.3rem .72rem;border:1px solid var(--line);color:var(--text);font-size:.88rem}
+    .edu,.exp,.award,.pub{border-bottom:1px solid var(--line)}
+    .edu:last-child,.exp:last-child,.award:last-child,.pub:last-child{border-bottom:0}
+    .edu,.exp{padding:1.05rem 0}
+    .edu:first-child,.exp:first-child{padding-top:0}
+    .row{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem 1rem;flex-wrap:wrap}
+    .primary{font-size:1.04rem;font-weight:600}
+    .period{color:var(--muted);font-size:.87rem;white-space:nowrap}
+    .secondary{margin-top:.12rem;color:var(--text);font-size:.96rem}
+    .tertiary{color:var(--muted);font-size:.88rem}
+    .pub{display:grid;grid-template-columns:34px 1fr;gap:1.05rem;padding:1.18rem 0}
+    .pub:first-child{padding-top:0}
+    .num{padding-top:.08rem;color:var(--muted);font-size:.86rem;text-align:right}
+    .pub-title{font-size:1.02rem;font-weight:600;line-height:1.5}
+    .pub-title a{text-decoration:none}
+    .pub-title a:hover{text-decoration:underline}
+    .authors{margin-top:.22rem;color:var(--muted);font-size:.92rem;line-height:1.55}
+    .venue{margin-top:.12rem;color:var(--text);font-size:.92rem;font-style:italic}
+    .filters{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.65rem}
+    .filters button{padding:.34rem .82rem;border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-size:.88rem}
+    .filters button.active{border-color:var(--ink);background:var(--ink);color:#fff;font-weight:600}
+    .pub.hidden{display:none}
+    .award{display:grid;grid-template-columns:58px 1fr;gap:1rem;padding:1rem 0}
+    .award:first-child{padding-top:0}
+    .year{color:var(--muted);font-size:.86rem;font-weight:600}
+    .award-title{font-weight:600}
+    .award-detail{margin-top:.1rem;color:var(--muted);font-size:.92rem}
+    .skills{display:flex;flex-direction:column;gap:.7rem}
+    .skill{display:grid;grid-template-columns:150px 1fr;gap:1rem}
+    .skill dt{color:var(--muted);font-size:.88rem;font-weight:600}
+    .skill dd{color:var(--text);font-size:.96rem}
+    .footer{max-width:1320px;margin:0 auto;padding:0 3rem 3rem;color:var(--muted);font-size:.86rem}
+    .flash{animation:flash 1.5s ease-out}
+    @keyframes flash{0%,45%{background:#f0efe9;box-shadow:-.5rem 0 #f0efe9,.5rem 0 #f0efe9}100%{background:transparent;box-shadow:none}}
+    @media(max-width:1050px){.topbar{grid-template-columns:minmax(220px,1fr) auto;grid-template-areas:"search brand" "nav nav"}.about-grid{grid-template-columns:220px minmax(0,1fr);gap:2.5rem}}
+    @media(max-width:760px){body{font-size:16px}.topbar{padding:.9rem 1.4rem}.page{padding:2.2rem 1.4rem 4rem}.footer{padding:0 1.4rem 2rem}.about-grid{grid-template-columns:1fr;gap:2rem}.profile{max-width:240px}.nav{margin-inline:-.2rem}.nav button{padding:.34rem .62rem}.page-title{font-size:1.55rem;margin-bottom:1.55rem}}
+    @media(max-width:470px){.topbar{grid-template-columns:1fr auto;padding:.8rem 1rem;gap:.45rem .8rem}.brand{font-size:1.18rem}.search input{font-size:.86rem}.nav button{font-size:.92rem}.page{padding:1.8rem 1rem 3.5rem}.footer{padding:0 1rem 2rem}.pub{grid-template-columns:25px 1fr;gap:.7rem}.award{grid-template-columns:48px 1fr}.skill{grid-template-columns:1fr;gap:.1rem}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="search">
+      <input id="searchInput" type="search" placeholder="Search keywords" autocomplete="off" aria-label="Search this site">
+      <div id="searchResults" class="results" role="listbox"></div>
+    </div>
+    <nav class="nav" aria-label="Main navigation">
+      <button class="active" data-page="about">About</button>
+      <button data-page="publications">Publications</button>
+      <button data-page="experience">Experience</button>
+      <button data-page="awards">Awards</button>
+      <button data-page="skills">Skills</button>
+    </nav>
+    <button class="brand" data-page="about">Jinoh Cho</button>
+  </header>
 
+  <main>
+    <section id="page-about" class="page active" data-label="About">
+      <h1 class="page-title">About</h1>
+      <div class="about-grid">
+        <aside class="profile">
+          <div class="portrait"><img src="assets/images/profile.png" alt="Jinoh Cho" onerror="this.closest('.portrait').style.display='none'"></div>
+          <div class="caption">Pohang, Republic of Korea</div>
+          <div class="profile-name">Jinoh Cho</div>
+          <div class="role">Ph.D. Candidate, Electrical Engineering</div>
+          <div class="affiliation">POSTECH · CSDL<br>Advisor: Prof. Seokhyeong Kang</div>
+          <div class="profile-links">
+            <a href="mailto:jinoma@postech.ac.kr"><span class="icon">✉</span>jinoma@postech.ac.kr</a>
+            <a href="tel:+82542792883"><span class="icon">☎</span>+82-54-279-2883</a>
+            <a href="https://csdl.postech.ac.kr" target="_blank" rel="noopener"><span class="icon">⌂</span>CSDL at POSTECH</a>
+            <a href="https://github.com/jinoh-cho" target="_blank" rel="noopener"><span class="icon">●</span>GitHub</a>
+          </div>
+        </aside>
+        <div>
+          <p class="bio searchable" data-search-title="Career profile">I am a member of the <a href="https://csdl.postech.ac.kr" target="_blank" rel="noopener">CSDL Lab</a>, advised by <a href="https://csdl.postech.ac.kr/bbs/board.php?bo_table=sub3_1" target="_blank" rel="noopener">Prof. Seokhyeong Kang</a>, in the Department of Electrical Engineering at Pohang University of Science and Technology (POSTECH). My research focuses on differentiable optimization frameworks for VLSI CAD objectives and AI-driven approaches to electronic design automation. I received my B.S. in Electrical Engineering and M.S. from the Graduate School of AI at POSTECH. During my M.S., I was advised by <a href="https://jaesik.info" target="_blank" rel="noopener">Prof. Jaesik Park</a> in the Computer Vision Lab.</p>
+          <h2 class="eyebrow">Research Interests</h2>
+          <div class="tags searchable" data-search-title="Research interests">
+            <span class="tag">AI for EDA</span><span class="tag">Differentiable Optimization</span><span class="tag">Physical Design Automation</span><span class="tag">Timing Optimization</span><span class="tag">Machine Learning</span>
+          </div>
+          <h2 class="eyebrow">Education</h2>
+          <div>
+            <article class="edu searchable" data-search-title="Ph.D. in Electrical Engineering"><div class="row"><div class="primary">Pohang University of Science and Technology (POSTECH)</div><div class="period">Current</div></div><div class="secondary">Ph.D. Candidate in Electrical Engineering</div><div class="tertiary">Pohang, Korea · Advisor: Prof. Seokhyeong Kang</div></article>
+            <article class="edu searchable" data-search-title="M.S. in Graduate School of AI"><div class="row"><div class="primary">Pohang University of Science and Technology (POSTECH)</div><div class="period">Sep 2020 – Feb 2023</div></div><div class="secondary">M.S. in Graduate School of AI</div><div class="tertiary">Advisor: Prof. Jaesik Park · Thesis: Instance-Aware Image Completion</div></article>
+            <article class="edu searchable" data-search-title="B.S. in Electrical Engineering"><div class="row"><div class="primary">Pohang University of Science and Technology (POSTECH)</div><div class="period">Mar 2016 – Aug 2020</div></div><div class="secondary">B.S. in Electrical Engineering</div><div class="tertiary">Pohang, Korea</div></article>
+          </div>
+        </div>
+      </div>
+    </section>
 
-{% include career-profile.html %}
+    <section id="page-publications" class="page" data-label="Publications">
+      <h1 class="page-title">Publications</h1>
+      <div class="filters" aria-label="Publication filters"><button class="active" data-filter="all">All</button><button data-filter="eda">EDA</button><button data-filter="vision">Computer Vision</button></div>
+      <div id="publicationList">
+        <article class="pub searchable" data-category="eda" data-search-title="Timing- and Power-Aware Differentiable Repair of Minimum Implant Area Violations"><div class="num">1</div><div><div class="pub-title"><a href="TBD">Timing- and Power-Aware Differentiable Repair of Minimum Implant Area Violations</a></div><div class="authors"><strong>Jinoh Cho</strong>, Minhyuk Kweon, Jinmo Ahn, Jeyeong Park, and Seokhyeong Kang</div><div class="venue">ACM/IEEE ISLPED, Evanston, IL, USA, 2026</div></div></article>
+        <article class="pub searchable" data-category="eda" data-search-title="Differentiable Fill Insertion with Explicit Delay Optimization"><div class="num">2</div><div><div class="pub-title"><a href="TBD">Differentiable Fill Insertion with Explicit Delay Optimization</a></div><div class="authors"><strong>Jinoh Cho</strong>, Jinmo Ahn, Jakang Lee, Jaeseung Lee, Seonghyeon Park, and Seokhyeong Kang</div><div class="venue">ACM/IEEE DAC, Long Beach, CA, USA, 2026</div></div></article>
+        <article class="pub searchable" data-category="eda" data-search-title="CTRL-B"><div class="num">3</div><div><div class="pub-title"><a href="TBD">CTRL-B: Back-End-Of-Line Configuration Optimization using Cross-Domain Transferable Reinforcement Learning</a></div><div class="authors">Jaeseung Lee, Sung-Yun Lee, <strong>Jinoh Cho</strong>, Daijoon Hyun, and Seokhyeong Kang</div><div class="venue">IEEE TCAD, 2026</div></div></article>
+        <article class="pub searchable" data-category="eda" data-search-title="Heterogeneous Graph-based Gate Sizer"><div class="num">4</div><div><div class="pub-title"><a href="TBD">A Heterogeneous Graph-based Gate Sizer Integrating Graph Attention Network and Transformer</a></div><div class="authors">Jinmo Ahn, <strong>Jinoh Cho</strong>, Jaemin Seo, Jaeseung Lee, Jakang Lee, and Seokhyeong Kang</div><div class="venue">ASP-DAC, Hong Kong, 2026</div></div></article>
+        <article class="pub searchable" data-category="eda" data-search-title="Improving LLM-based Verilog Code Generation"><div class="num">5</div><div><div class="pub-title"><a href="https://ieeexplore.ieee.org/document/10992897" target="_blank" rel="noopener">Improving LLM-based Verilog Code Generation with Data Augmentation and RL</a></div><div class="authors">Kyungjun Min, Seonghyeon Park, Hyeonwoo Park, <strong>Jinoh Cho</strong>, and Seokhyeong Kang</div><div class="venue">DATE, Lyon, France, 2025</div></div></article>
+        <article class="pub searchable" data-category="eda" data-search-title="Leveraging Machine Learning Techniques for Traditional EDA Workflow Enhancement"><div class="num">6</div><div><div class="pub-title"><a href="https://dl.acm.org/doi/10.1145/3658617.3703144" target="_blank" rel="noopener">Leveraging Machine Learning Techniques for Traditional EDA Workflow Enhancement</a></div><div class="authors"><strong>Jinoh Cho</strong>, Jaekyung Im, Jaeseung Lee, Kyungjun Min, Seonghyeon Park, Jaemin Seo, Jongho Yoon, and Seokhyeong Kang</div><div class="venue">ASP-DAC, Tokyo, Japan, 2025</div></div></article>
+        <article class="pub searchable" data-category="eda" data-search-title="RL-Fill"><div class="num">7</div><div><div class="pub-title"><a href="https://dl.acm.org/doi/10.1145/3676536.3676795" target="_blank" rel="noopener">RL-Fill: Timing-Aware Fill Insertion using Reinforcement Learning</a></div><div class="authors"><strong>Jinoh Cho</strong>, Seonghyeon Park, Jakang Lee, Sung-Yun Lee, Jinmo Ahn, and Seokhyeong Kang</div><div class="venue">ICCAD, Newark, USA, 2024</div></div></article>
+        <article class="pub searchable" data-category="eda" data-search-title="Timing-Aware 3D IC Partitioning"><div class="num">8</div><div><div class="pub-title"><a href="https://ieeexplore.ieee.org/document/10740192" target="_blank" rel="noopener">Timing-Aware 3D IC Partitioning and Placement by Optimizing the Critical Path</a></div><div class="authors">Donggyu Kim, Minjae Kim, Junseok Hur, Jakang Lee, <strong>Jinoh Cho</strong>, and Seokhyeong Kang</div><div class="venue">MLCAD, Snowbird, UT, USA, 2024</div></div></article>
+        <article class="pub searchable" data-category="vision" data-search-title="Instance-Aware Image Completion"><div class="num">9</div><div><div class="pub-title"><a href="https://arxiv.org/abs/2210.12350" target="_blank" rel="noopener">Instance-Aware Image Completion</a></div><div class="authors"><strong>Jinoh Cho</strong>, Minguk Kang, Vibhav Vineet, and Jaesik Park</div><div class="venue">CVPR Workshops, Vancouver, Canada, 2023</div></div></article>
+      </div>
+    </section>
 
-{% unless site.data.data.sidebar.education %}
-  {% include education.html %}
-{% endunless %}
+    <section id="page-experience" class="page" data-label="Experience">
+      <h1 class="page-title">Experience</h1>
+      <article class="exp searchable" data-search-title="Samsung Electronics internship"><div class="row"><div class="primary">Samsung Electronics</div><div class="period">Jan 2020 – Feb 2020</div></div><div class="secondary">Research Intern · CE/IM Visual Display, SoC H/W Team</div></article>
+      <article class="exp searchable" data-search-title="LG Display internship"><div class="row"><div class="primary">LG Display</div><div class="period">Jun 2018 – Jul 2018</div></div><div class="secondary">Research Intern · OLED Encapsulation Team</div></article>
+    </section>
 
-{% include experiences.html %}
+    <section id="page-awards" class="page" data-label="Awards">
+      <h1 class="page-title">Awards &amp; Honors</h1>
+      <article class="award searchable" data-search-title="Samsung HumanTech Paper Award"><div class="year">2026</div><div><div class="award-title">Encouragement Award, 32nd Samsung HumanTech Paper Award</div><div class="award-detail">Jinoh Cho, Jinmo Ahn, and Seokhyeong Kang · Top 3.8% among 3,172 submissions</div></div></article>
+      <article class="award searchable" data-search-title="POSTECH-EE Research Achievement Award"><div class="year">2025</div><div><div class="award-title">3rd Prize, 4th POSTECH-EE Research Achievement Sharing and Award</div><div class="award-detail">Research Achievement Award</div></div></article>
+      <article class="award searchable" data-search-title="Artificial Intelligence Diabetes Datathon"><div class="year">2021</div><div><div class="award-title"><a href="https://www.youtube.com/watch?v=LgOKBqKem60" target="_blank" rel="noopener">Excellence Award, Artificial Intelligence Diabetes Datathon</a></div><div class="award-detail">Team leader · AI model development challenge for diabetes prediction</div></div></article>
+    </section>
 
-{% include projects.html %}
+    <section id="page-skills" class="page" data-label="Skills">
+      <h1 class="page-title">Skills &amp; Proficiency</h1>
+      <dl class="skills searchable" data-search-title="Technical skills">
+        <div class="skill"><dt>Programming</dt><dd>Python, C, C++, Verilog</dd></div>
+        <div class="skill"><dt>Research</dt><dd>Differentiable optimization, reinforcement learning, graph neural networks, computer vision</dd></div>
+        <div class="skill"><dt>Languages</dt><dd>Korean (native), English (professional)</dd></div>
+        <div class="skill"><dt>Interests</dt><dd>Soccer and tennis</dd></div>
+      </dl>
+    </section>
+  </main>
 
-{% include oss-contributions.html %}
+  <footer class="footer">© <span id="year"></span> Jinoh Cho · jinoma@postech.ac.kr</footer>
+  <script>
+    const pages=[...document.querySelectorAll('.page')];
+    const navButtons=[...document.querySelectorAll('[data-page]')];
+    function showPage(id,updateHash=true){
+      pages.forEach(p=>p.classList.toggle('active',p.id===`page-${id}`));
+      document.querySelectorAll('.nav [data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===id));
+      if(updateHash) history.replaceState(null,'',id==='about'?'#about':`#${id}`);
+      window.scrollTo({top:0,behavior:'instant'});
+    }
+    navButtons.forEach(button=>button.addEventListener('click',()=>showPage(button.dataset.page)));
+    const initial=location.hash.slice(1);
+    if(pages.some(p=>p.id===`page-${initial}`)) showPage(initial,false);
+    window.addEventListener('hashchange',()=>{const id=location.hash.slice(1)||'about';if(pages.some(p=>p.id===`page-${id}`))showPage(id,false)});
 
-{% include publications.html %}
+    document.querySelectorAll('.filters button').forEach(button=>button.addEventListener('click',()=>{
+      document.querySelectorAll('.filters button').forEach(b=>b.classList.toggle('active',b===button));
+      document.querySelectorAll('.pub').forEach(pub=>pub.classList.toggle('hidden',button.dataset.filter!=='all'&&pub.dataset.category!==button.dataset.filter));
+    }));
 
-{% include awards.html %}
-
-{% include skills.html %}
+    const searchInput=document.getElementById('searchInput');
+    const searchResults=document.getElementById('searchResults');
+    const searchable=[...document.querySelectorAll('.searchable')].map(el=>({el,title:el.dataset.searchTitle||el.textContent.trim().slice(0,80),text:el.textContent.toLowerCase(),page:el.closest('.page')}));
+    function closeSearch(){searchResults.classList.remove('open')}
+    function runSearch(){
+      const query=searchInput.value.trim().toLowerCase();
+      searchResults.replaceChildren();
+      if(!query){closeSearch();return}
+      const hits=searchable.filter(x=>x.text.includes(query)||x.title.toLowerCase().includes(query)).slice(0,9);
+      if(!hits.length){const empty=document.createElement('div');empty.className='result';empty.textContent='No results';searchResults.append(empty)}
+      hits.forEach(hit=>{const button=document.createElement('button');button.className='result';button.innerHTML=`<small>${hit.page.dataset.label}</small><span>${hit.title}</span>`;button.addEventListener('click',()=>{showPage(hit.page.id.replace('page-',''));searchInput.value='';closeSearch();searchInput.blur();hit.el.classList.remove('flash');void hit.el.offsetWidth;hit.el.classList.add('flash');hit.el.scrollIntoView({behavior:'smooth',block:'center'})});searchResults.append(button)});
+      searchResults.classList.add('open');
+    }
+    searchInput.addEventListener('input',runSearch);
+    searchInput.addEventListener('focus',runSearch);
+    document.addEventListener('click',event=>{if(!event.target.closest('.search'))closeSearch()});
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>

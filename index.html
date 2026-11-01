@@ -81,6 +81,12 @@
     .skill dt{color:var(--muted);font-size:.88rem;font-weight:600}
     .skill dd{color:var(--text);font-size:.96rem}
     .footer{max-width:1320px;margin:0 auto;padding:0 3rem 3rem;color:var(--muted);font-size:.86rem}
+    .privacy-button{border:0;background:none;color:inherit;text-decoration:underline;cursor:pointer}
+    .privacy-dialog{margin:auto;max-width:480px;width:calc(100% - 2rem);padding:1.5rem;border:1px solid var(--line);color:var(--text);line-height:1.6}
+    .privacy-dialog::backdrop{background:rgba(0,0,0,.25)}
+    .privacy-dialog p{margin:.8rem 0}
+    .privacy-actions{display:flex;flex-wrap:wrap;gap:.6rem}
+    .privacy-actions button{padding:.4rem .8rem;background:var(--paper);border:1px solid var(--line);cursor:pointer}
     .flash{animation:flash 1.5s ease-out}
     @keyframes flash{0%,45%{background:#f0efe9;box-shadow:-.5rem 0 #f0efe9,.5rem 0 #f0efe9}100%{background:transparent;box-shadow:none}}
     @media(max-width:1050px){.topbar{grid-template-columns:minmax(220px,1fr) auto;grid-template-areas:"search brand" "nav nav"}.about-grid{grid-template-columns:220px minmax(0,1fr);gap:2.5rem}}
@@ -178,7 +184,13 @@
     </section>
   </main>
 
-  <footer class="footer">© <span id="year"></span> Jinoh Cho · jinoma@postech.ac.kr</footer>
+  <footer class="footer">© <span id="year"></span> Jinoh Cho · jinoma@postech.ac.kr · <button class="privacy-button" id="privacyPreferences">Privacy &amp; analytics</button></footer>
+  <dialog class="privacy-dialog" id="analyticsConsent" aria-labelledby="analyticsHeading">
+    <h2 id="analyticsHeading">Privacy &amp; analytics</h2>
+    <p>With your permission, this site uses Google Analytics cookies to measure visits, approximate location, referral sources, and section views. No analytics tag is loaded until you accept. This site does not send your name, email address, or site-search text to Analytics, and does not enable advertising personalization.</p>
+    <p>Google processes this data under its <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>. Learn <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">how Google uses data from this site</a>. You can change your choice here at any time. Your preference is stored in this browser.</p>
+    <div class="privacy-actions"><button id="declineAnalytics">Decline analytics</button><button id="acceptAnalytics">Accept analytics</button></div>
+  </dialog>
   <script>
     const pages=[...document.querySelectorAll('.page')];
     const navButtons=[...document.querySelectorAll('[data-page]')];
@@ -187,6 +199,7 @@
       document.querySelectorAll('.nav [data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===id));
       if(updateHash) history.replaceState(null,'',id==='about'?'#about':`#${id}`);
       window.scrollTo({top:0,behavior:'instant'});
+      window.reportPageView?.(id);
     }
     navButtons.forEach(button=>button.addEventListener('click',()=>showPage(button.dataset.page)));
     const initial=location.hash.slice(1);
@@ -215,6 +228,51 @@
     searchInput.addEventListener('focus',runSearch);
     document.addEventListener('click',event=>{if(!event.target.closest('.search'))closeSearch()});
     document.getElementById('year').textContent=new Date().getFullYear();
+    const measurementId='G-PR5GSPNY97';
+    const consentKey='jinoh-analytics-consent';
+    const consentDialog=document.getElementById('analyticsConsent');
+    let analyticsEnabled=false;
+    let lastAnalyticsPage='';
+    function readConsent(){try{return localStorage.getItem(consentKey)}catch{return null}}
+    function saveConsent(value){try{localStorage.setItem(consentKey,value)}catch{}}
+    window.reportPageView=function(id){
+      if(!analyticsEnabled||id===lastAnalyticsPage)return;
+      const section=document.getElementById(`page-${id}`);
+      if(!section)return;
+      lastAnalyticsPage=id;
+      window.gtag('event','page_view',{page_title:`${section.dataset.label} | Jinoh Cho`,page_location:`${location.origin}${location.pathname}#${id}`});
+    };
+    function enableAnalytics(){
+      if(analyticsEnabled||location.hostname!=='jinoh-cho.github.io')return;
+      analyticsEnabled=true;
+      window[`ga-disable-${measurementId}`]=false;
+      window.dataLayer=window.dataLayer||[];
+      window.gtag=function(){window.dataLayer.push(arguments)};
+      window.gtag('js',new Date());
+      window.gtag('config',measurementId,{send_page_view:false,allow_google_signals:false,allow_ad_personalization_signals:false,cookie_domain:location.hostname,page_location:`${location.origin}${location.pathname}`,page_referrer:document.referrer?document.referrer.split(/[?#]/)[0]:''});
+      const tag=document.createElement('script');
+      tag.async=true;
+      tag.src=`https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+      document.head.append(tag);
+      window.reportPageView(document.querySelector('.page.active').id.replace('page-',''));
+    }
+    document.getElementById('privacyPreferences').addEventListener('click',()=>consentDialog.showModal());
+    document.getElementById('acceptAnalytics').addEventListener('click',()=>{saveConsent('granted');consentDialog.close();enableAnalytics()});
+    document.getElementById('declineAnalytics').addEventListener('click',()=>{
+      saveConsent('denied');
+      window[`ga-disable-${measurementId}`]=true;
+      document.cookie.split(';').forEach(cookie=>{
+        const name=cookie.trim().split('=')[0];
+        if(name==='_ga'||name.startsWith('_ga_')){
+          document.cookie=`${name}=; Max-Age=0; path=/`;
+          document.cookie=`${name}=; Max-Age=0; path=/; domain=${location.hostname}`;
+        }
+      });
+      consentDialog.close();
+      if(analyticsEnabled)location.reload();
+    });
+    if(readConsent()==='granted')enableAnalytics();
+    else if(readConsent()!=='denied')consentDialog.showModal();
   </script>
 </body>
 </html>
